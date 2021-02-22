@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"fifa","l":"Home_Page"},{"p":"fifa","l":"League_form"},{"p":"fifa","l":"League_Table"},{"p":"fifa","l":"Login_form"},{"p":"fifa","l":"My_Cnx"},{"p":"fifa","l":"Player_vs_player"},{"p":"fifa","l":"Register_Form"},{"p":"fifa","l":"Test_class"}];updateSearchResults();
