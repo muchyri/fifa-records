@@ -17,8 +17,17 @@ public class Test_class {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-     League_Table table=new League_Table();
-     table.Create_table();
+      Create_matches match=new Create_matches();
+      //League_update update=new League_update(3,2);
+      
+        match.prompt();
+        match.create_leagueTable();
+        match.addTeamToLeagueTable();
+        match.createMatches_table();
+        match.create_matchesPlayed();
+      
+    // League_Table table=new League_Table();
+     //table.Create_table();
         /*  
        String choice= JOptionPane.showInputDialog("Enter number of teams to participate");
        int c=Integer.parseInt(choice);

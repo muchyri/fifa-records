@@ -24,17 +24,22 @@ public class League_Table {
    public int j;
    String [] teams;
    String [] games;
+   public void prompt(){
+       league= JOptionPane.showInputDialog("Enter league name:");
+       choice= JOptionPane.showInputDialog("Enter number of teams to participate(more than 3):");
+   }
    
     public League_Table(){
      
     }
     public  void Create_table(){
+        prompt();
         String messo;
         PreparedStatement ps;
              //create table after if statement 
-                league= JOptionPane.showInputDialog("Enter league name:");
+               // league= JOptionPane.showInputDialog("Enter league name:");
                 //create league table
-                if(!league.equals("")){
+                if(!league.equals("") && !league.equals(null)){
                 String message=String.format("create table users_db.%s(pos int not null,team varchar(100) not null,GP int not null,W int not null,D int not null,L int not null,GF int not null,GA int not null,GD int not null,POINTS int not null)engine = innodb ",league);
                 String registerUserQuery=message;
         try {
@@ -43,10 +48,10 @@ public class League_Table {
         } catch (SQLException ex) {
           Logger.getLogger(League_Table.class.getName()).log(Level.SEVERE, null, ex);
         }
-        choice= JOptionPane.showInputDialog("Enter number of teams to participate(more than 3):"); 
+       // choice= JOptionPane.showInputDialog("Enter number of teams to participate(more than 3):"); 
         c=Integer.parseInt(choice);
         System.out.println(c);
-        // if(choice.equals("") && c>2){
+         if(!choice.equals("") && c>2){
         teams=new String[c];
          k=c*(c-1);
         j=0;
@@ -54,7 +59,7 @@ public class League_Table {
       
         for(int i=1;i<=c;i++){
             messo=String.format("enter team %s",i);
-            if(!messo.equals("")){
+            if(!messo.equals("") && !league.equals(null)){
             teams[i-1]=JOptionPane.showInputDialog(messo);
             String query=String.format("insert into %s (pos,team,gp,W,D,L,GF,GA,GD,POINTS)values(?,?,?,?,?,?,?,?,?,?)",league);
             String updateQuery=query;
@@ -125,12 +130,12 @@ public class League_Table {
     }
         
         
-   // }
-              //  else if(choice.equals("")){
-                  //  JOptionPane.showMessageDialog(null,"cannot leave number of teams blank");
-               // }else{
-                //    JOptionPane.showMessageDialog(null,"minimum number of teams is three");
-               // }
+    }
+               else if(choice.equals("")){
+                   JOptionPane.showMessageDialog(null,"cannot leave number of teams blank");
+                }else{
+                    JOptionPane.showMessageDialog(null,"minimum number of teams is three");
+               }
                 }
                 else{
                     JOptionPane.showMessageDialog(null,"cannot leave league name blank");
