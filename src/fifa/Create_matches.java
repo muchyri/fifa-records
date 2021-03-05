@@ -22,6 +22,7 @@ public class Create_matches {
    private int c;
    private int k;
    private int j;
+   private int status=0;
    private String [] teams;
    private String [] games;
    String messo;
@@ -30,9 +31,15 @@ public class Create_matches {
    private int GD=0;
    private int MP=0;
    private int points=0;
-   private int W;
-   private int D;
-   private int L;
+   private int W=0;
+   private int D=0;
+   private int L=0;
+   public void setStatus(int status){
+       this.status=status;
+   }
+   public int getStatus(){
+       return status;
+   }
    
    public void setGF(int GF){
        this.GF=GF;
@@ -158,7 +165,7 @@ public void addTeamToLeagueTable(){
 }
     public void createMatches_table(){
        PreparedStatement ps2;
-  String messages=String.format("create table users_db.%s_matches(match_id int not null auto_increment,team1 varchar(100) not null,vs varchar(20) not null,team2 varchar(100) not null, primary key(match_id))engine = innodb",league);
+  String messages=String.format("create table users_db.%s_matches(match_id int not null auto_increment,status int not null,team1 varchar(100) not null,vs varchar(20) not null,team2 varchar(100) not null, primary key(match_id))engine = innodb",league);
                 String registerUser_Query=messages;
         try {
           ps2=My_Cnx.getConnection().prepareStatement(registerUser_Query);
@@ -174,14 +181,15 @@ public void addTeamToLeagueTable(){
                  // j++; 
                  String team1=teams[p];
                  String team2=teams[w];
-                String query=String.format("insert into %s_matches(team1,vs,team2)values(?,?,?)",league);
+                String query=String.format("insert into %s_matches(status,team1,vs,team2)values(?,?,?,?)",league);
             String updateQuery=query;
             try {
                 ps2=My_Cnx.getConnection().prepareStatement(updateQuery);
                 String vs=String.format("vs");
-              ps2.setString(1,team1);
-              ps2.setString(2,vs);
-              ps2.setString(3,team2);
+                ps2.setInt(1,status);
+              ps2.setString(2,team1);
+              ps2.setString(3,vs);
+              ps2.setString(4,team2);
               if(ps2.executeUpdate()!=0){
                          JOptionPane.showMessageDialog(null,"Update successful");
                      }

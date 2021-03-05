@@ -5,6 +5,7 @@
  */
 package fifa;
 
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,15 +18,16 @@ public class Test_class {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      Create_matches match=new Create_matches();
+     /* Create_matches match=new Create_matches();
       //League_update update=new League_update(3,2);
-      
+      Scanner sc=new Scanner(System.in);
         match.prompt();
         match.create_leagueTable();
         match.addTeamToLeagueTable();
         match.createMatches_table();
-        match.create_matchesPlayed();
-      
+        match.create_matchesPlayed()
+                */;
+            
     // League_Table table=new League_Table();
      //table.Create_table();
         /*  
@@ -77,6 +79,4 @@ public class Test_class {
 	 }
 */
       
-    }
-    
-}
+    }}

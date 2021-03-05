@@ -40,7 +40,7 @@ public class Home_Page extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem_competition = new javax.swing.JMenuItem();
+        jMenuItem_logIn = new javax.swing.JMenuItem();
         jMenuItem_logout = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
@@ -91,8 +91,13 @@ public class Home_Page extends javax.swing.JFrame {
 
         jMenu1.add(jMenu4);
 
-        jMenuItem_competition.setText("log in");
-        jMenu1.add(jMenuItem_competition);
+        jMenuItem_logIn.setText("log in");
+        jMenuItem_logIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_logInActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem_logIn);
 
         jMenuItem_logout.setText("log out");
         jMenuItem_logout.addActionListener(new java.awt.event.ActionListener() {
@@ -144,8 +149,18 @@ public class Home_Page extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem_kickoffActionPerformed
 
     private void new_leagueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_leagueActionPerformed
-        
+       League_testGui gui=new League_testGui();
+       gui.setVisible(true);
+       gui.pack();
+       gui.setLocationRelativeTo(null);
     }//GEN-LAST:event_new_leagueActionPerformed
+
+    private void jMenuItem_logInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_logInActionPerformed
+        Login_form form= new Login_form();
+        form.setVisible(true);
+        form.pack();
+        form.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItem_logInActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,8 +209,8 @@ public class Home_Page extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem_competition;
     private javax.swing.JMenuItem jMenuItem_kickoff;
+    private javax.swing.JMenuItem jMenuItem_logIn;
     private javax.swing.JMenuItem jMenuItem_logout;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem new_league;
