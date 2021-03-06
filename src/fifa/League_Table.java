@@ -40,7 +40,7 @@ public class League_Table {
                // league= JOptionPane.showInputDialog("Enter league name:");
                 //create league table
                 if(!league.equals("") && !league.equals(null)){
-                String message=String.format("create table users_db.%s(pos int not null,team varchar(100) not null,GP int not null,W int not null,D int not null,L int not null,GF int not null,GA int not null,GD int not null,POINTS int not null)engine = innodb ",league);
+                String message=String.format("create table users_db.%s(team varchar(100) not null,GP int not null,W int not null,D int not null,L int not null,GF int not null,GA int not null,GD int not null,POINTS int not null)engine = innodb ",league);
                 String registerUserQuery=message;
         try {
           ps=My_Cnx.getConnection().prepareStatement(registerUserQuery);

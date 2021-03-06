@@ -83,8 +83,16 @@ String team2;
         team2=model.getValueAt(i,2).toString();
        String q1="Enter score for "+team1;
        String q2="Enter score for "+team2;
+       if(q1.isEmpty()){
+           throw new Exception("scores cannot be blank");
+       }else{
+      System.out.println("yaas");
         score1=Integer.parseInt(JOptionPane.showInputDialog(null,q1));
-        score2= Integer.parseInt(JOptionPane.showInputDialog(null,q2));
+        score2= Integer.parseInt(JOptionPane.showInputDialog(null,q2));       
+       }
+
+       
+        
          
         String vs="vs";
         status=1;
@@ -159,7 +167,13 @@ String team2;
         }
     } catch (SQLException ex) {
         Logger.getLogger(League_testGui.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (Exception ex) {
+        Logger.getLogger(League_testGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+    //catch (Exception e){
+      //  System.out.println(e);
+        //JOptionPane.showMessageDialog(null, e.getMessage());
+    //}
     
        // Create_matches match=new Create_matches();
        // int status=match.getStatus();
@@ -218,7 +232,7 @@ String team2;
                 //JOptionPane.showMessageDialog(null,"Table exists");
                 PreparedStatement ps;
                
-                String data=String.format("Select* from %s order by points desc",league);
+                String data=String.format("Select* from %s order by points desc, GD desc, GF desc,GA asc",league);
                 String query=data;
                 ps=My_Cnx.getConnection().prepareStatement(query);
                rs=ps.executeQuery();
@@ -233,9 +247,11 @@ String team2;
                     }
                   System.out.println("number of rows= "+j);  
                 }
+                int num=1;
                while(rs.next()){
                    //data added until finish
-                   String pos=String.valueOf(rs.getInt("pos"));
+                   
+                   String pos=String.valueOf(num);
                    String team=rs.getString("team");
                    String GP=String.valueOf(rs.getInt("MP"));
                    String W=String.valueOf(rs.getInt("W"));
@@ -247,6 +263,7 @@ String team2;
                    String POINTS=String.valueOf(rs.getInt("POINTS"));
                    //String array to store data in jtable
                    String tbData[]={pos,team,GP,W,D,L,GF,GA,GD,POINTS};
+                   num++;
                   // DefaultTableModel tbmodel=(DefaultTableModel)jTable_leaguetable.getModel();
                    tbmodel.addRow(tbData);
                }

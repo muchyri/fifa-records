@@ -18,6 +18,13 @@ public class Test_class {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        int n=5;
+        int number=1;
+        
+        for(int i=2;i<=n-1;i++){
+            number+=i;
+        }
+        System.out.println(number);
      /* Create_matches match=new Create_matches();
       //League_update update=new League_update(3,2);
       Scanner sc=new Scanner(System.in);
