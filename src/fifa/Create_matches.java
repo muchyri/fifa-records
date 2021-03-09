@@ -102,9 +102,14 @@ public class Create_matches {
        this.points=points;
    }
    public void prompt(){
-       league= JOptionPane.showInputDialog("Enter league name:");
-       if(!league.equals("")){
-         choice= JOptionPane.showInputDialog("Enter number of teams to participate(atleast 3):");
+       
+       do{
+         league= JOptionPane.showInputDialog("Enter league name:"); 
+       }
+       while(league.equals(""));
+       do{
+        choice= JOptionPane.showInputDialog("Enter number of teams to participate(atleast 3):");
+       }while(choice.equals(""));
          c=Integer.parseInt(choice);
          if(!choice.equals("") && c>2 && !choice.equals(null)){
              teams=new String[c];
@@ -112,15 +117,17 @@ public class Create_matches {
         j=0;
       games=new String[k];
              for(int i=1;i<=c;i++){
-            messo=String.format("enter team %s",i);
-            if(!messo.equals("") && !league.equals(null)){
+             messo=String.format("enter team %s",i);
+              do{   
             teams[i-1]=JOptionPane.showInputDialog(messo);
-         }
+            
+              }while(teams[i-1].equals(""));
+         
        }
        
    }
        }     
-}
+
 public void create_leagueTable(){
     
     PreparedStatement ps;
@@ -155,7 +162,7 @@ public void addTeamToLeagueTable(){
                     ps.setInt(9,getGD());
                      ps.setInt(10,getPoints());
                      if(ps.executeUpdate()!=0){
-                         JOptionPane.showMessageDialog(null,"Update successful");
+                         System.out.println("Update successful");
                      }
                 
             } catch (SQLException ex) {
@@ -191,7 +198,7 @@ public void addTeamToLeagueTable(){
               ps2.setString(3,vs);
               ps2.setString(4,team2);
               if(ps2.executeUpdate()!=0){
-                         JOptionPane.showMessageDialog(null,"Update successful");
+                         System.out.println("Update successful");
                      }
                 
             } catch (SQLException ex) {

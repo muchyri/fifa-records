@@ -83,17 +83,19 @@ String team2;
         team2=model.getValueAt(i,2).toString();
        String q1="Enter score for "+team1;
        String q2="Enter score for "+team2;
-       if(q1.isEmpty()){
-           throw new Exception("scores cannot be blank");
-       }else{
-      System.out.println("yaas");
-        score1=Integer.parseInt(JOptionPane.showInputDialog(null,q1));
-        score2= Integer.parseInt(JOptionPane.showInputDialog(null,q2));       
-       }
-
+      
+      String s1=JOptionPane.showInputDialog(null,q1);
+      while(s1.equals("")){
+           s1=JOptionPane.showInputDialog(null,q1);
+      }
+      String s2=JOptionPane.showInputDialog(null,q2);
        
-        
-         
+      while(s2.equals("")){
+           s2=JOptionPane.showInputDialog(null,q2);
+      }
+      score1=Integer.parseInt(s1);
+        score2= Integer.parseInt(s2);
+      
         String vs="vs";
         status=1;
         String query3=String.format("update %s_matches set status=? where match_id=%s", league,match_id);
@@ -167,13 +169,8 @@ String team2;
         }
     } catch (SQLException ex) {
         Logger.getLogger(League_testGui.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (Exception ex) {
-        Logger.getLogger(League_testGui.class.getName()).log(Level.SEVERE, null, ex);
     }
-    //catch (Exception e){
-      //  System.out.println(e);
-        //JOptionPane.showMessageDialog(null, e.getMessage());
-    //}
+   
     
        // Create_matches match=new Create_matches();
        // int status=match.getStatus();
@@ -557,10 +554,16 @@ String team2;
     }//GEN-LAST:event_jButton_playselectedmatchActionPerformed
 
     private void jButton_displayleagueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_displayleagueActionPerformed
-       displayLeagueTable();
+      String league=jTextField_leaguename.getText();
+      if(!league.equals("")){
+         
+        displayLeagueTable();
        displayLeagueMatches();
        displayMatchesPlayed();
-       
+      }
+      else{
+         JOptionPane.showMessageDialog(null,"enter league name.");  
+      }
     }//GEN-LAST:event_jButton_displayleagueActionPerformed
 
     private void jTextField_leaguenameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_leaguenameActionPerformed
